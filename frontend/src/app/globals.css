@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+:root {
+  --background: #07070a;
+  --surface: #111116;
+  --surface-2: #17171d;
+  --line: rgb(255 255 255 / 0.08);
+  --line-strong: rgb(255 255 255 / 0.14);
+  --foreground: #f7f7f8;
+  --muted: #9a9aa6;
+  --faint: #6b6b76;
+  --spark: #ff5b2a;
+  --spark-2: #ff754c;
+  --spark-3: #ffad83;
+  --planet: #8ab4ff;
+}
+
+@theme inline {
+  --color-bg: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--foreground);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-spark: var(--spark);
+  --color-spark-2: var(--spark-2);
+  --color-spark-3: var(--spark-3);
+  --color-planet: var(--planet);
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+}
+
+html { color-scheme: dark; }
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+}
+
+.text-spark-gradient {
+  background: linear-gradient(110deg, #ff4d00, #ff6b35 50%, #ffb07d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-spark {
+  background: linear-gradient(to right, #ff4d00, #ff754c 50%, #ffad83);
+  box-shadow: 0 14px 45px rgb(255 91 42 / 0.25);
+}
+
+.glow-bg {
+  background:
+    radial-gradient(60% 50% at 70% 35%, rgb(255 91 42 / 0.10), transparent 70%),
+    radial-gradient(40% 40% at 20% 90%, rgb(138 180 255 / 0.06), transparent 70%);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-float { animation: float 7s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 40s linear infinite; }
+.animate-twinkle { animation: twinkle 3s ease-in-out infinite; }
+.animate-rise { animation: rise 0.35s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float, .animate-spin-slow, .animate-twinkle, .animate-rise { animation: none; }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; color: #111; }
+}
